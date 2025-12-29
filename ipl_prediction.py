@@ -75,29 +75,12 @@ print("✅ Model Accuracy:", accuracy)
 # PREDICTION FUNCTION
 # =====================
 def predict_match(team1, team2, toss, venue, season):
-    input_df = pd.DataFrame([{
+    input_data = pd.DataFrame([{
         'team1': team1,
         'team2': team2,
         'toss_decision': toss,
         'venue': venue,
         'season': season
     }])
-    return model.predict(input_df)
 
-# =====================
-# USER INPUT
-# =====================
-print("\n===== USER INPUT IPL MATCH PREDICTION =====")
-
-team1 = input("Enter Team 1: ")
-team2 = input("Enter Team 2: ")
-toss = input("Toss decision (bat/field): ")
-venue = input("Enter Venue: ")
-season = int(input("Enter Season (year): "))
-
-winner_pred = predict_match(team1, team2, toss, venue, season)
-
-if winner_pred[0] == 1:
-    print(f"\n🏏 PREDICTED WINNER: {team1}")
-else:
-    print(f"\n🏏 PREDICTED WINNER: {team2}")
+    return model.predict(input_data)
